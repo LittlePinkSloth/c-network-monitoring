@@ -1,0 +1,117 @@
+/*
+ * Project: IoT Monitoring System
+ * Author: LittlePinkSloth
+ * License: MIT License
+ */
+
+
+:root {
+    --bg-color: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --text-color: #e0e0e0;
+    --accent-color: #00adb5;
+    --danger-color: #ff4d4d;
+}
+
+header {
+    display: flex;
+    justify-content: space-between; /* Pousse le titre à gauche et le statut à droite */
+    align-items: baseline;        /* Aligne le texte sur la ligne de base pour l'élégance */
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+#status-bar {
+    font-size: 0.85em;
+    font-weight: bold;
+    padding: 5px 12px;
+    background: rgba(0, 0, 0, 0.2); /* Petit fond discret */
+    border-radius: 20px;
+    border: 1px solid #333;
+}
+
+#connection-status {
+    margin-left: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 15px;
+}
+
+/* La grille : 5 colonnes de taille égale */
+.container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px; /* Un peu plus d'espace entre les cartes */
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 15px; /* On redonne un peu d'air aux marges internes */
+    border-left: 6px solid var(--type-color, #555);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    min-height: 320px; /* Augmenté de ~30% pour stabiliser la taille */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card h3 {
+    margin: 0 0 8px 0;
+    font-size: 0.9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--accent-color);
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    padding: 4px 0;
+    border-bottom: 1px solid #3d3d3d;
+}
+
+/* Graphique miniature */
+canvas {
+    margin-top: 15px;
+    /* On force une hauteur plus importante pour le graphique */
+    height: 120px !important; 
+    max-height: 150px !important;
+}
+
+/* Couleurs des types */
+.type-pc-linux { --type-color: #3498db; }
+.type-pc-windows { --type-color: #2980b9; }
+.type-raspberry { --type-color: #c0392b; }
+.type-voiture { --type-color: #f1c40f; }
+.type-bras { --type-color: #9b59b6; }
+
+/* Animation d'alerte */
+.alert-mode {
+    background: #451a1a;
+    border-left-color: var(--danger-color);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+.warning-text {
+    color: var(--danger-color) !important;
+    font-weight: 800; /* Très gras */
+    text-shadow: 0 0 5px rgba(255, 77, 77, 0.5); /* Effet lumineux */
+    font-size: 1.1em; /* Légère augmentation de taille */
+}
